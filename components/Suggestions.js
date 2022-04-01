@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 function Suggestions() {
   const [suggestions, setSuggestions] = useState([]);
+  const [clicked, setClick] = useState(false);
   useEffect(() => {
     axios
       .get("https://randomuser.me/api/?results=20")
@@ -24,7 +25,7 @@ function Suggestions() {
         <h3 className="text-sm font-bold text-gray-400">Suggestion for you</h3>
         <button className="text-gray-600 font-semibold">See All</button>
       </div>
-      {suggestions.slice(0, 5).map((user) => (
+      {suggestions.slice(0, 1).map((user) => (
         <div key={user.id} className="flex items-center justify-between mt-3">
           <img
             className="w-10 h-10 rounded-full border p-[2px]"
@@ -36,7 +37,12 @@ function Suggestions() {
             <h3 className="text-xs text-gray-400">Works at {user.caption}</h3>
           </div>
           <div>
-            <button className="text-blue-400 text-xs font-bold">Follow</button>
+            <button
+              onClick={() => setClick(!clicked)}
+              className="text-blue-400 text-xs font-bold"
+            >
+              {!clicked ? "Follow" : "Following"}
+            </button>
           </div>
         </div>
       ))}
