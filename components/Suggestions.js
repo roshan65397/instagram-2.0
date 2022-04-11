@@ -25,7 +25,7 @@ function Suggestions() {
         <h3 className="text-sm font-bold text-gray-400">Suggestion for you</h3>
         <button className="text-gray-600 font-semibold">See All</button>
       </div>
-      {suggestions.slice(0, 1).map((user) => (
+      {suggestions.slice(0, 5).map((user) => (
         <div key={user.id} className="flex items-center justify-between mt-3">
           <img
             className="w-10 h-10 rounded-full border p-[2px]"

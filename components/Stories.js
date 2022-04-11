@@ -9,6 +9,7 @@ function Stories() {
   const { data: session } = useSession();
   const [suggestions, setSuggestions] = useState([]);
   useEffect(() => {
+   
     axios
       .get("https://randomuser.me/api/?results=20")
       .then((res) =>
@@ -23,6 +24,7 @@ function Stories() {
         setSuggestions(users);
       })
       .catch((e) => console.log(e));
+       // fetching fake user from faker.js
     //     const suggestions = [...Array(20)].map((_, i) => ({
     //       ...faker.helpers.contextualCard(),
     //       id: i,
@@ -33,9 +35,11 @@ function Stories() {
   return (
     <div className="flex space-x-2 p-6 bg-white mt-8 border-gray-200 border rounded-sm overflow-x-scroll ">
       {/* <Story /> */}
+      {/* for admin's story */}
       {session && (
         <Story img={session.user.image} username={session.user.username} />
       )}
+      {/* other's stories */}
       {suggestions.map((profile) => (
         <Story
           key={profile.id}
@@ -43,8 +47,7 @@ function Stories() {
           username={profile.username}
         />
       ))}
-
-      {/* <Stories /> */}
+  {/* <Stories /> */}
     </div>
   );
 }

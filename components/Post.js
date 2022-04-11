@@ -139,7 +139,10 @@ function Post({ id, username, userImg, img, caption }) {
               </>
             ) : (
               <>
-                <HeartIcon onClick={likedPost} className="btn " />
+                <HeartIcon
+                  onClick={likedPost}
+                  className="btn animate-pulse  "
+                />
               </>
             )}
 

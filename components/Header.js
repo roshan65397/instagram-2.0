@@ -1,5 +1,5 @@
 import React from "react";
-// import Image from "next/image";
+import Image from "next/image";
 import {
   SearchIcon,
   PlusCircleIcon,
@@ -34,6 +34,7 @@ export default function Header() {
         >
           <img
             src="https://links.papareact.com/ocw"
+            // layout="fill"
             alt=""
             objectFit="contain"
           />
@@ -51,7 +52,7 @@ export default function Header() {
         {/* Middle-> Search */}
         <div className="max-w-xs">
           <div className="relative  mt-1 p-3 rounded-md ">
-            <div className="absolute inset-y-0 pl-3 flex items-center ">
+            <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none ">
               <SearchIcon className="h-5 w-5 text-gray-500" />
             </div>
             <input
@@ -67,11 +68,13 @@ export default function Header() {
           <MenuIcon className="h-6 md:hidden cursor-pointer " />
 
           <div className="relative navBtn">
+            {/* custome utility class -> navBtn */}
             <PaperAirplaneIcon className="navBtn rotate-45" />
             <div className="absolute -top-1 -right-2 text-xs w-5 h-5 justify-center bg-red-500 rounded-full flex items-center animate-pulse text-white">
               30
             </div>
           </div>
+          {/* upload post */}
           <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
           <UserGroupIcon className="navBtn" />
           <HeartIcon className="navBtn" />
